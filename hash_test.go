@@ -6,7 +6,6 @@ import (
 	"io"
 	"log"
 	"os"
-	"runtime/pprof"
 	"testing"
 	"unsafe"
 )
@@ -138,16 +137,16 @@ func TestHashDups(t *testing.T) {
 }
 
 func BenchmarkHandleChunk(b *testing.B) {
-	cpuProf, err := os.Create("cpu_custom_hash.prof")
-	if err != nil {
-		b.Fatal(err)
-	}
-	defer cpuProf.Close()
-
-	if err := pprof.StartCPUProfile(cpuProf); err != nil {
-		panic(err)
-	}
-	defer pprof.StopCPUProfile()
+	// cpuProf, err := os.Create("cpu_custom_hash.prof")
+	// if err != nil {
+	// 	b.Fatal(err)
+	// }
+	// defer cpuProf.Close()
+	//
+	// if err := pprof.StartCPUProfile(cpuProf); err != nil {
+	// 	panic(err)
+	// }
+	// defer pprof.StopCPUProfile()
 
 	file, err := os.Open("./testdata/sample_data.txt")
 	if err != nil {
